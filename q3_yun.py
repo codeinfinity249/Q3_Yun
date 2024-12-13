@@ -18,14 +18,12 @@ data = {
 }
 df = pd.DataFrame(data)
 
-# Convert dataframe to numpy array for distance calculations
+
 coords = df[['x', 'y']].values
 
-# Apply DBSCAN with a maximum distance of 0.5 for grouping
 dbscan = DBSCAN(eps=0.5, min_samples=1, metric='euclidean')
 clusters = dbscan.fit_predict(coords)
 
-# Add cluster labels to the dataframe
 df['group'] = clusters
 
 print(df)
